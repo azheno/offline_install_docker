@@ -5,7 +5,8 @@ if which docker >/dev/null; then
 else 
   echo -e "----------------------------------------------------"
   echo -e "安装docker运行环境:"
-  tar -xvf ./extendinstall/docker.tgz -C ./extendinstall
+  tar -zxvf ./extendinstall.tar.gz
+  tar -zxvf ./extendinstall/docker.tgz -C ./extendinstall
   groupadd docker 
   chmod 777 ./extendinstall/docker/* 
   cp ./extendinstall/docker/* /usr/bin/
