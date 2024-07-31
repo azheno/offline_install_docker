@@ -10,12 +10,13 @@
 
 ```shell
 .
-├── x86
-│   ├── extendinstall.tar.gz
-│   └── install_docker-compose.sh		# 执行脚本
-└── arm
-    ├── extendinstall.tar.gz
-    └── install_docker-compose.sh		# 执行脚本
+├── arm
+│   └── extendinstall.tar.gz
+├── install_docker-compose.sh
+├── README.md
+└── x86
+    └── extendinstall.tar.gz
+
 ```
 
 
@@ -24,8 +25,6 @@
 
 ```shell
 git clone https://github.com/azheno/docker_install.git
-cd arm 	# 选择对应自己的架构进入
-cd x86 	# 选择对应自己的架构进入
 bash ./install_docker-compose.sh
 ```
 
