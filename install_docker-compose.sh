@@ -1,12 +1,27 @@
 #！/bin/bash 
+get_arch(){
+	get_arch=`arch`
+	if [[ $get_arch =~ "x86_64" ]] ; then 
+		arch="x86" 
+	elif [[ $get_arch =~ "aarch64" ]] ; then 
+		arch="arm" 
+	elif  [[ $get_arch =~ "mips64" ]] ; then 
+		arch="misp" 
+	else	
+		arch="unknown"
+	fi 
+	echo "OS Version is : $arch" 
+}
+
+get_arch 
 
 if which docker >/dev/null; then
   echo '检测到docker 已经安装，跳过安装步骤'
 else 
   echo -e "----------------------------------------------------"
   echo -e "安装docker运行环境:"
-  tar -zxvf ./extendinstall.tar.gz
-  tar -zxvf ./extendinstall/docker.tgz -C ./extendinstall
+  tar -zxvf ./$arch/extendinstall.tar.gz
+  tar -xvf ./extendinstall/docker.tgz -C ./extendinstall
   groupadd docker 
   chmod 777 ./extendinstall/docker/* 
   cp ./extendinstall/docker/* /usr/bin/
@@ -26,6 +41,7 @@ else
   chmod -R 777 /usr/bin/docker-compose
 fi
 /usr/bin/docker-compose -v
+rm -rf ./extendinstall/
 
 
 
